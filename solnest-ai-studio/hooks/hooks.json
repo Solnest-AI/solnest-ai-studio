@@ -1,0 +1,29 @@
+{
+  "description": "Automated quality gates for the Solnest AI coding agent. Pre-Bash secret scanning and post-edit auto-test loop (test → fail → fix → retest).",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PLUGIN_ROOT/hooks/scripts/secret-scan.sh\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PLUGIN_ROOT/hooks/scripts/auto-test.sh\"",
+            "timeout": 120
+          }
+        ]
+      }
+    ]
+  }
+}

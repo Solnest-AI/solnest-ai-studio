@@ -1,0 +1,13 @@
+{
+  "name": "solnest",
+  "owner": {
+    "name": "Ryan Le",
+    "email": "ryan@solnestai.com"
+  },
+  "plugins": [
+    {
+      "name": "solnest-ai-studio",
+      "source": "./solnest-ai-studio"
+    }
+  ]
+}
